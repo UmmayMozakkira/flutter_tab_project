@@ -1,77 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
-void main() => runApp(const ChartApp()); // Added const
+void main() => runApp(MyApp());
 
-class ChartApp extends StatelessWidget {
-  const ChartApp({super.key}); // Added const and super.key
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final title = 'GeeksForGeeks';
+
     return MaterialApp(
-      title: 'Charts in Flutter',
-      debugShowCheckedModeBanner: false, // Debug tag remove korar jonno
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(),
-    );
-  }
-}
+      debugShowCheckedModeBanner: false,
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+          backgroundColor: Colors.green,
+        ),
+        body: Container(
+          margin: const EdgeInsets.symmetric(vertical: 20.0), // .symmetric যুক্ত করা হয়েছে
+          height: 550.0,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                height: 480.0,
+                width: 240.0,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/tom.jpg'),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+              const SizedBox(width: 10), 
+              Container(
+                height: 480.0,
+                width: 240.0,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/jerry.jpg'),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+              const SizedBox(width: 10),
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key}); // Added const constructor
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  // Tooltip behavior track korar jonno variable
-  late TooltipBehavior _tooltipBehavior;
-
-  @override
-  void initState() {
-    _tooltipBehavior = TooltipBehavior(enable: true);
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('GeeksForGeeks'),
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.green,
-      ),
-      body: SfCartesianChart(
-        primaryXAxis: const CategoryAxis(), // Constant axis
-        title: ChartTitle(text: 'Monthly Covid-19 Infections'),
-        legend: const Legend(isVisible: true),
-        tooltipBehavior: _tooltipBehavior,
-        series: <CartesianSeries<Infections, String>>[
-          LineSeries<Infections, String>(
-            dataSource: <Infections>[
-              Infections('Jan', 35000),
-              Infections('Feb', 28000),
-              Infections('Mar', 34000),
-              Infections('Apr', 32000),
-              Infections('May', 40000),
-              Infections('Jun', 60000)
+              Container(
+                height: 480.0,
+                width: 240.0,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/t j.jpg'),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: BoxShape.rectangle,
+                ),
+              ),
             ],
-            xValueMapper: (Infections data, _) => data.year,
-            yValueMapper: (Infections data, _) => data.victims,
-            // Data labels setting
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-          )
-        ],
+          ),
+        ),
       ),
     );
   }
-}
-
-
-// Model class name theke underscore (_) bad dewa bhalo jodi onno file theke access korte chan
-class Infections {
-  Infections(this.year, this.victims);
-  final String year;
-  final double victims;
 }
