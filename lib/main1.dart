@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-void main() => runApp(const ChartApp()); // Added const
+void main() => runApp(const ChartApp()); 
 
 class ChartApp extends StatelessWidget {
-  const ChartApp({super.key}); // Added const and super.key
+  const ChartApp({super.key}); 
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Charts in Flutter',
-      debugShowCheckedModeBanner: false, // Debug tag remove korar jonno
+      debugShowCheckedModeBanner: false, 
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MyHomePage(),
     );
@@ -18,7 +18,7 @@ class ChartApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key}); // Added const constructor
+  const MyHomePage({super.key}); 
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -68,8 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-
-// Model class name theke underscore (_) bad dewa bhalo jodi onno file theke access korte chan
 class Infections {
   Infections(this.year, this.victims);
   final String year;
